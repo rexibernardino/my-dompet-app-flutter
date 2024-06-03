@@ -1,7 +1,8 @@
 # mydompet
 
-A new Flutter project.
+This is a financial transaction application that allows users to track their income, expenses, saving goals, and generate financial statements.
 
+key-features
 ## Getting Started
 
 This project is a starting point for a Flutter application.
