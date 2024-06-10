@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'currency_page.dart';
 
 class SettingPage extends StatefulWidget {
-  const SettingPage({super.key});
+  const SettingPage({Key? key}) : super(key: key);
 
   @override
   _SettingPageState createState() => _SettingPageState();
@@ -9,18 +10,21 @@ class SettingPage extends StatefulWidget {
 
 class _SettingPageState extends State<SettingPage> {
   int _currentIndex = 4; // Indeks untuk Settings
+  late String _selectedCurrency = 'Rupiah'; // Menyimpan pilihan currency
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        title: const Text('Account Setting'),
+        title: const Text('Account Setting', style: TextStyle(color: Colors.black)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -54,6 +58,7 @@ class _SettingPageState extends State<SettingPage> {
                 ),
               ),
             ),
+
             const SizedBox(height: 16.0),
             const Text('Phone Number'),
             Container(
@@ -101,16 +106,24 @@ class _SettingPageState extends State<SettingPage> {
             ),
             const SizedBox(height: 16.0),
             const Text('Currency'),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.green[100],
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: const TextField(
-                decoration: InputDecoration(
-                  hintText: 'Rupiah',
-                  contentPadding: EdgeInsets.all(8.0),
-                  border: InputBorder.none,
+            GestureDetector(
+              onTap: () async {
+                final newCurrency = await Navigator.push(context, MaterialPageRoute(builder: (context) => CurrencyPage(selectedCurrency: _selectedCurrency)));
+                if (newCurrency != null) {
+                  setState(() {
+                    _selectedCurrency = newCurrency as String;
+                  });
+                }
+              },
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.green[100],
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Text(_selectedCurrency),
                 ),
               ),
             ),

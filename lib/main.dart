@@ -9,6 +9,7 @@ import 'spending_page.dart';
 import 'setting_page.dart';
 import 'history_page.dart';
 import 'saving_plan_page.dart';
+import 'currency_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
         '/setting': (context) => const SettingPage(),
         '/history': (context) => const HistoryPage(),
         '/saving_plan': (context) => const SavingPlanPage(),
+        '/currency': (context) => CurrencyPage(selectedCurrency: 'Rupiah',),
       },
     );
   }

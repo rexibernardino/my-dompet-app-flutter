@@ -14,54 +14,70 @@ class _SavingPageState extends State<SavingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        title: const Text('Saving'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const Center(
+            child: Text(
+              'Saving',
+              style: TextStyle(
+                fontSize: 30.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          const SizedBox(height: 28),
           Container(
             color: Colors.green,
             padding: const EdgeInsets.all(16),
-            child: const Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Saving',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                SizedBox(height: 8),
-                Spacer(),
-                Row(
+                const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Rp 1000000',
+                      'Saving',
                       style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
                         color: Colors.white,
+                        fontSize: 20.0,
                       ),
                     ),
-                    Spacer(),
-                    SizedBox(width: 8),
+                    Text(
+                      'Rp 100,000,000.00,-',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 26.0,
+                      ),
+                    ),
                   ],
+                ),
+                GestureDetector(
+                  onTap: () {
+                  },
+                  child: Image.asset(
+                    'wallet.png',
+                    width: 100,
+                    height: 100,
+                  ),
                 ),
               ],
             ),
           ),
           const SizedBox(height: 16),
-          const ListTile(
+          ListTile(
             tileColor: Colors.green,
-            title: Text(
+            title: const Text(
               'Dana Darurat',
               style: TextStyle(
                 fontSize: 16,
@@ -69,7 +85,7 @@ class _SavingPageState extends State<SavingPage> {
                 color: Colors.white,
               ),
             ),
-            trailing: Text(
+            trailing: const Text(
               'Rp 50000',
               style: TextStyle(
                 fontSize: 16,
@@ -77,10 +93,16 @@ class _SavingPageState extends State<SavingPage> {
                 color: Colors.white,
               ),
             ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            contentPadding: const EdgeInsets.all(10),
+            visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
-          const ListTile(
+          const SizedBox(height: 8),
+          ListTile(
             tileColor: Colors.green,
-            title: Text(
+            title: const Text(
               'Gift',
               style: TextStyle(
                 fontSize: 16,
@@ -88,7 +110,7 @@ class _SavingPageState extends State<SavingPage> {
                 color: Colors.white,
               ),
             ),
-            trailing: Text(
+            trailing: const Text(
               'Rp 25000',
               style: TextStyle(
                 fontSize: 16,
@@ -96,10 +118,16 @@ class _SavingPageState extends State<SavingPage> {
                 color: Colors.white,
               ),
             ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            contentPadding: const EdgeInsets.all(10),
+            visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
-          const ListTile(
+          const SizedBox(height: 8),
+          ListTile(
             tileColor: Colors.green,
-            title: Text(
+            title: const Text(
               'Hiburan',
               style: TextStyle(
                 fontSize: 16,
@@ -107,7 +135,7 @@ class _SavingPageState extends State<SavingPage> {
                 color: Colors.white,
               ),
             ),
-            trailing: Text(
+            trailing: const Text(
               'Rp 50000',
               style: TextStyle(
                 fontSize: 16,
@@ -115,6 +143,11 @@ class _SavingPageState extends State<SavingPage> {
                 color: Colors.white,
               ),
             ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            contentPadding: const EdgeInsets.all(10),
+            visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
         ],
       ),
