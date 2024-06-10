@@ -63,7 +63,7 @@ class LoginPage extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/saving'); // logic login
+                Navigator.pushNamed(context, '/dashboard'); // logic login
               },
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(

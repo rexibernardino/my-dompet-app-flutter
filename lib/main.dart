@@ -5,6 +5,7 @@ import 'register_page.dart';
 import 'dashboard_page.dart';
 import 'saving_page.dart';
 import 'income_page.dart';
+import 'spending_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,9 +26,10 @@ class MyApp extends StatelessWidget {
         '/': (context) => const LandingPage(),
         '/login': (context) => const LoginPage(),
         '/register': (context) => const RegisterPage(),
-        // '/dashboard': (context) => const DashboardPage(),
+        '/dashboard': (context) => const DashboardPage(),
         '/saving': (context) => const SavingPage(),
         '/income': (context) => const IncomePage(),
+        '/spending': (context) => const SpendingPage(),
       },
     );
   }
