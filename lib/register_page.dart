@@ -95,7 +95,7 @@ class RegisterPage extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // logic login
+                Navigator.pushNamed(context, '/dashboard'); // logic register
               },
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(

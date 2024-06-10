@@ -4,8 +4,15 @@ import 'history_page.dart';
 import 'saving_plan_page.dart';
 import 'setting_page.dart';
 
-class DashboardPage extends StatelessWidget {
+class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
+
+  @override
+  _DashboardPageState createState() => _DashboardPageState();
+}
+
+class _DashboardPageState extends State<DashboardPage> {
+  int _currentIndex = 2; // Default index untuk Home
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +41,8 @@ class DashboardPage extends StatelessWidget {
                   ),
                 ),
                 CircleAvatar(
-                  radius: 20,
-                  backgroundImage: AssetImage('Maria.jpg'), // Replace with your image URL
+                  radius: 20.0,
+                  backgroundImage: AssetImage('Maria.jpg'),
                 ),
               ],
             ),
@@ -71,11 +78,12 @@ class DashboardPage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      // Navigasi ke halaman saving_page
+                      Navigator.pushNamed(context, '/saving');// Navigasi ke halaman saving_page
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const SavingPage()),
+                          builder: (context) => const SavingPage(),
+                        ),
                       );
                     },
                     child: const Icon(
@@ -136,8 +144,7 @@ class DashboardPage extends StatelessWidget {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {
-                          // Navigasi ke halaman history_page.dart
+                        onTap: () {// Navigasi ke halaman history_page.dart
                           Navigator.pushNamed(context, '/history');
                         },
                         child: const Text(
@@ -156,11 +163,11 @@ class DashboardPage extends StatelessWidget {
                     child: ListTile(
                       leading: Icon(Icons.shopping_bag),
                       title: Text('Nike Air Max 2090'),
-                      subtitle: Text('15 Aug 2020'),
                       trailing: Text(
                         '-\$243.00',
                         style: TextStyle(color: Colors.red),
                       ),
+                      subtitle: Text('15 Aug 2020'),
                     ),
                   ),
                   const SizedBox(height: 8.0),
@@ -169,11 +176,11 @@ class DashboardPage extends StatelessWidget {
                     child: ListTile(
                       leading: Icon(Icons.attach_money),
                       title: Text('Pemasukan'),
-                      subtitle: Text('15 Aug 2020'),
                       trailing: Text(
                         '+\$700.00',
                         style: TextStyle(color: Colors.green),
                       ),
+                      subtitle: Text('15 Aug 2020'),
                     ),
                   ),
                 ],
@@ -183,34 +190,36 @@ class DashboardPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.green, // Warna item yang dipilih
+        unselectedItemColor: Colors.grey,
+        currentIndex: _currentIndex, // Indeks halaman saat ini
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.savings,
-                color: Colors.blueGrey),
+            icon: Icon(Icons.savings),
             label: 'Savings',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.history,
-                color: Colors.blueGrey),
+            icon: Icon(Icons.history),
             label: 'History',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home,
-                color: Colors.blueGrey),
+            icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.schedule,
-                color: Colors.blueGrey),
+            icon: Icon(Icons.schedule),
             label: 'Saving Plan',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings,
-                color: Colors.blueGrey),
+            icon: Icon(Icons.settings),
             label: 'Settings',
           ),
         ],
         onTap: (index) {
+          setState(() {
+            _currentIndex = index; // Mengubah indeks saat item diklik
+          });
+          // Navigasi sesuai dengan indeks yang dipilih
           switch (index) {
             case 0:
               Navigator.pushNamed(context, '/saving');
@@ -240,8 +249,7 @@ class DashboardPage extends StatelessWidget {
       ),
     );
   }
-}
-
+  }
 class SpendingChartPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {

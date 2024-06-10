@@ -7,6 +7,12 @@ class SavingPlanPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         title: const Text('Savings Plan'),
       ),
       body: Padding(
@@ -93,19 +99,23 @@ class SavingPlanPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24.0),
-            Center(
+            Align(
+              alignment: Alignment.bottomCenter,
               child: ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.orange,
-                  padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width * 0.4,
+                    vertical: 16,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
                 child: const Text(
                   'Save',
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
             ),
@@ -113,7 +123,9 @@ class SavingPlanPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 3, // Highlight the current page
+        selectedItemColor: Colors.green, // Warna item yang dipilih
+        unselectedItemColor: Colors.grey,
+        currentIndex: 3, // Indeks halaman saat ini
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.savings),
@@ -145,13 +157,13 @@ class SavingPlanPage extends StatelessWidget {
               Navigator.pushNamed(context, '/history');
               break;
             case 2:
-              Navigator.pushNamed(context, '/');
+              Navigator.pushNamed(context, '/dashboard');
               break;
             case 3:
             // already on Saving Plan, do nothing
               break;
             case 4:
-              Navigator.pushNamed(context, '/settings');
+              Navigator.pushNamed(context, '/setting');
               break;
           }
         },

@@ -64,6 +64,52 @@ class HistoryPage extends StatelessWidget {
           // Tambahkan ListTile lainnya sesuai kebutuhan
         ],
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.green,
+        unselectedItemColor: Colors.grey,
+        currentIndex: 1,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.savings),
+            label: 'Savings',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.history),
+            label: 'History',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.schedule),
+            label: 'Saving Plan',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
+        onTap: (index) {
+          switch (index) {
+            case 0:
+              Navigator.pushNamed(context, '/saving');
+              break;
+            case 1:
+            // already on History, do nothing
+              break;
+            case 2:
+              Navigator.pushNamed(context, '/dashboard');
+              break;
+            case 3:
+              Navigator.pushNamed(context, '/saving_plan');
+              break;
+            case 4:
+              Navigator.pushNamed(context, '/setting');
+              break;
+          }
+        },
+      ),
     );
   }
 }
