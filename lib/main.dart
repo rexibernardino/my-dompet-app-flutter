@@ -6,6 +6,9 @@ import 'dashboard_page.dart';
 import 'saving_page.dart';
 import 'income_page.dart';
 import 'spending_page.dart';
+import 'setting_page.dart';
+import 'history_page.dart';
+import 'saving_plan_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,6 +33,9 @@ class MyApp extends StatelessWidget {
         '/saving': (context) => const SavingPage(),
         '/income': (context) => const IncomePage(),
         '/spending': (context) => const SpendingPage(),
+        '/setting': (context) => const SettingPage(),
+        '/history': (context) => const HistoryPage(),
+        '/saving_plan': (context) => const SavingPlanPage(),
       },
     );
   }
