@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
-class SavingPlanPage extends StatelessWidget {
+class SavingPlanPage extends StatefulWidget {
   const SavingPlanPage({super.key});
+
+  @override
+  _SavingPlanPageState createState() => _SavingPlanPageState();
+}
+
+class _SavingPlanPageState extends State<SavingPlanPage> {
+  double _sliderValue = 0.87; // Menyimpan nilai dari Slider
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +20,6 @@ class SavingPlanPage extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: const Text('Savings Plan'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -40,15 +46,15 @@ class SavingPlanPage extends StatelessWidget {
                         height: 100,
                         width: 100,
                         child: CircularProgressIndicator(
-                          value: 0.87,
+                          value: _sliderValue,
                           strokeWidth: 10.0,
                           backgroundColor: Colors.grey[300],
                           color: Colors.green,
                         ),
                       ),
-                      const Text(
-                        '87%',
-                        style: TextStyle(
+                      Text(
+                        '${(_sliderValue * 100).toStringAsFixed(0)}%',
+                        style: const TextStyle(
                           fontSize: 24.0,
                           fontWeight: FontWeight.bold,
                         ),
@@ -57,13 +63,17 @@ class SavingPlanPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 24.0),
                   SliderTheme(
-                    data: const SliderThemeData(
+                    data: SliderTheme.of(context).copyWith(
                       trackHeight: 8.0,
-                      thumbShape: RoundSliderThumbShape(enabledThumbRadius: 12.0),
+                      thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 12.0),
                     ),
                     child: Slider(
-                      value: 0.87,
-                      onChanged: (value) {},
+                      value: _sliderValue,
+                      onChanged: (value) {
+                        setState(() {
+                          _sliderValue = value;
+                        });
+                      },
                       activeColor: Colors.green,
                       inactiveColor: Colors.orange,
                     ),
