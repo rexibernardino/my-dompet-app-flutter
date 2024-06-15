@@ -58,10 +58,10 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/Maria.jpg
-    - assets/piggy-bank-fill.svg
-    - assets/WelcomeLogin.png
-    - assets/wallet.png
+    Maria.jpg
+    piggy-bank-fill.svg
+    WelcomeLogin.png
+    assets/wallet.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
