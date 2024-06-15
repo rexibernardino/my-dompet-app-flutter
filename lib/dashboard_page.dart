@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'saving_page.dart';
+import 'income_page.dart';
 import 'history_page.dart';
 import 'saving_plan_page.dart';
 import 'setting_page.dart';
@@ -240,7 +241,12 @@ class _DashboardPageState extends State<DashboardPage> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => IncomePage()),
+          );
+        },
         backgroundColor: Colors.green,
         child: const Icon(
           Icons.add,

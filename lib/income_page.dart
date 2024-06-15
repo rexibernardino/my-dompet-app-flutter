@@ -1,14 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+import 'dashboard_page.dart';
+import 'spending_page.dart';
 
-class IncomePage extends StatelessWidget {
+class IncomePage extends StatefulWidget {
   const IncomePage({super.key});
+
+  @override
+  _IncomePageState createState() => _IncomePageState();
+}
+
+class _IncomePageState extends State<IncomePage> {
+  File? _image;
+
+  Future<void> _pickImage() async {
+    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back_ios),
           onPressed: () => Navigator.pop(context),
         ),
         title: const Text('Income'),
@@ -29,7 +49,12 @@ class IncomePage extends StatelessWidget {
                 ),
                 const SizedBox(width: 16),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SpendingPage()),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.grey,
                   ),
@@ -38,30 +63,38 @@ class IncomePage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 16),
-            const Text(
-              'Income',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
             const TextField(
               decoration: InputDecoration(
-                hintText: 'Nominal',
+                labelText: 'Income',
+                filled: true,
+                fillColor: Color(0xFFEFEFEF),
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 16.0),
+            const TextField(
+              decoration: InputDecoration(
+                labelText: 'Nominal',
+                filled: true,
+                fillColor: Color(0xFFEFEFEF),
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 16.0),
+            const TextField(
+              decoration: InputDecoration(
+                labelText: 'Title',
+                filled: true,
+                fillColor: Color(0xFFEFEFEF),
                 border: OutlineInputBorder(),
               ),
             ),
             const SizedBox(height: 16),
             const TextField(
               decoration: InputDecoration(
-                hintText: 'Title',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 16),
-            const TextField(
-              decoration: InputDecoration(
-                hintText: 'Description',
+                labelText: 'Description',
+                filled: true,
+                fillColor: Color(0xFFEFEFEF),
                 border: OutlineInputBorder(),
               ),
             ),
@@ -77,22 +110,40 @@ class IncomePage extends StatelessWidget {
                 ),
                 const Spacer(),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: _pickImage,
                   icon: const Icon(Icons.camera_alt),
                 ),
               ],
             ),
-            const SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.orange,
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
+            if (_image != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 16.0),
+                child: Image.file(
+                  _image!,
+                  height: 200,
+                  fit: BoxFit.cover,
                 ),
               ),
-              child: const Text('Save'),
+            const SizedBox(height: 32),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.orange,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width * 0.4,
+                    vertical: 16,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                child: const Text(
+                  'Save',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
             ),
           ],
         ),
