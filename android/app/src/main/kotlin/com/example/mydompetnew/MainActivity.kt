@@ -1,4 +1,4 @@
-package com.example.mydompeet
+package com.example.mydompetnew
 
 import io.flutter.embedding.android.FlutterActivity
 
