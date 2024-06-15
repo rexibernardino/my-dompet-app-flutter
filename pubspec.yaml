@@ -30,7 +30,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
   image_picker: ^0.8.4+4
 
   # The following adds the Cupertino Icons font to your application.
@@ -58,6 +57,11 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/Maria.jpg
+    - assets/piggy-bank-fill.svg
+    - assets/WelcomeLogin.png
+    - assets/wallet.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
